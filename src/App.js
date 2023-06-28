@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import MovieCard from './components/MovieCard';
-import SearchArea from './components/SearchArea';
 
 function App() {
 
@@ -37,10 +36,16 @@ function App() {
     <div className='p-8 flex flex-col justify-center'>
       <h1 className='font-bold text-6xl text-center'>Movie Database</h1>
       <div className="flex flex-col my-8 items-center gap-4">
-        <SearchArea handleChange={handleChange} handleSubmit={handleSubmit}  />
-        <button className="p-2 rounded-xl hover:bg-black hover:text-white border-2 border-black w-1/6" onClick={fetchMovies} >Reset</button>
+      <div className="container flex justify-center">
+        <form action="" onSubmit={handleSubmit} className="w-full flex justify-center items-center gap-8">
+          <input className="w-full h-[36px] rounded-full text-center text-lg" type="text" onChange={handleChange}/>
+          <button className="min-w-[100px] p-2 rounded-xl hover:bg-black hover:text-white border-2 border-black ">Search</button> 
+        </form>
+        <button className="mx-2 min-w-[100px] p-2 rounded-xl hover:bg-black hover:text-white border-2 border-black" onClick={fetchMovies} >Reset</button>
       </div>
-      <div className='p-8 flex flex-wrap justify-center gap-4'>
+      
+      </div>
+      <div className='p-8 flex flex-wrap justify-center gap-3'>
       {movies.map(movie => {
         return (
           <MovieCard key={movie.id} movie={movie}/>
